@@ -1,5 +1,7 @@
 package com.example.springsecurity.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,11 +16,13 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("sys_user")
 public class User implements Serializable {
 
     /**
      * 主键
      */
+    @TableId
     private Long id;
 
     /**
@@ -49,7 +53,7 @@ public class User implements Serializable {
     /**
      * 手机号
      */
-    private String pbonenumber;
+    private String phonenumber;
 
     /**
      * 性别
