@@ -37,6 +37,7 @@ public class LoginServiceImpl implements LoginService {
         // 如果认证成功，使用userId生成一个jwt，jwt存入ResponseResult返回
         authenticate.getPrincipal();
 
+        // 把完整用户信息存入Redis，userId作为key
 
         return null;
     }
