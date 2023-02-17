@@ -27,5 +27,4 @@ class SpringSecurityApplicationTests {
         List<User> users = userMapper.selectList(null);
         System.out.println(users);
     }
-
 }

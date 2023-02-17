@@ -117,7 +117,13 @@ public class JwtUtil {
      * @author wxz
      * @date 16:27 2023/2/16
      */
-    public static Claims parseJWT(String jwt) throws Exception {
-        return Jwts.parser().setSigningKey(generalKey()).parseClaimsJwt(jwt).getBody();
+    public static Claims parseJWT(String jwt) {
+        SecretKey secretKey = generalKey();
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwt).getBody();
+    }
+
+    public static void main(String[] args) {
+        Claims claims = parseJWT("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4MTMxNjc0MmE3OTI0MmM4YTYyMThiMDhlNDQwZTQ3NiIsInN1YiI6IjEyMzQ1NiIsImlzcyI6Ind4eiIsImlhdCI6MTY3NjYwNTUxMCwiZXhwIjoxNjc2NjA5MTEwfQ.ucOnXg-cnD5XMbnlPqm6FiSG_EoIgIxtD6aQ70yDxPE");
+        System.out.println(claims.getSubject());
     }
 }
