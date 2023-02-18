@@ -17,4 +17,13 @@ public interface LoginService {
      * @date 11:56 2023/2/17
      */
     ResponseResult login(User user);
+
+    /**
+     * 退出登录
+     *
+     * @return com.example.springsecurity.domain.ResponseResult
+     * @author wxz
+     * @date 15:44 2023/2/18
+     */
+    ResponseResult logout();
 }
