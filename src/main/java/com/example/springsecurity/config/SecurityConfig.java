@@ -1,5 +1,6 @@
 package com.example.springsecurity.config;
 
+import com.example.springsecurity.filter.JwtAuthenticationTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,6 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.annotation.Resource;
 
 /**
  * @author wxz
@@ -15,6 +19,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Resource
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
     /**
      * 创建BCryptPasswordEncoder注入容器
@@ -55,5 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/user/login").anonymous()
             // 除上面外的接口都需要权限验证
             .anyRequest().authenticated();
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }
