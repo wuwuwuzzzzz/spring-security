@@ -51,7 +51,7 @@ public class LoginServiceImpl implements LoginService {
         map.put("token", jwt);
 
         // 把完整用户信息存入Redis，userId作为key
-        redisCache.setCacheObject("login:" + userId, loginUser, 30, TimeUnit.SECONDS);
+        redisCache.setCacheObject("login:" + userId, loginUser, 3, TimeUnit.MINUTES);
 
         return new ResponseResult(200, "登录成功", map);
     }
