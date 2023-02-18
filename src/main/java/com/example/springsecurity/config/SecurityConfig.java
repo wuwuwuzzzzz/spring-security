@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * @param http
+     * @param http 请求
      * @author wxz
      * @date 12:12 2023/2/17
      */
