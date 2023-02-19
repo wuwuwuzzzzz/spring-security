@@ -18,6 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
 
+    /**
+     * 自定义认证异常处理
+     *
+     * @author wxz
+     * @date 15:06 2023/2/19
+     */
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) {
         WebUtils.renderString(response,
