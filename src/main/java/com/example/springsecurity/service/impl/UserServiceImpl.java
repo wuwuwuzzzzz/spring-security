@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (Objects.isNull(user)) {
             throw new RuntimeException("用户名或者密码错误");
         }
-        //TODO 查询用户对应权限信息
+        // 查询用户对应权限信息
         List<String> list = new ArrayList<>(Arrays.asList("test", "admin"));
 
         // 把数据封装成UserDetails返回
