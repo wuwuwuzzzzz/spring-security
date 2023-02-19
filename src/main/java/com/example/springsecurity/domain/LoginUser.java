@@ -21,8 +21,14 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class LoginUser implements UserDetails {
 
+    /**
+     * 用户信息
+     */
     private User user;
 
+    /**
+     * 权限信息
+     */
     private List<String> permissions;
 
     public LoginUser(User user, List<String> permissions) {
