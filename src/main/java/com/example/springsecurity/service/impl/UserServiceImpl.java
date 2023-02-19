@@ -3,6 +3,7 @@ package com.example.springsecurity.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.springsecurity.domain.LoginUser;
 import com.example.springsecurity.domain.User;
+import com.example.springsecurity.mapper.MenuMapper;
 import com.example.springsecurity.mapper.UserMapper;
 import com.example.springsecurity.service.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +28,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private MenuMapper menuMapper;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -39,7 +43,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             throw new RuntimeException("用户名或者密码错误");
         }
         // 查询用户对应权限信息
-        List<String> list = new ArrayList<>(Arrays.asList("test", "admin"));
+        List<String> list = menuMapper.selectPermsByUserId(1L);
 
         // 把数据封装成UserDetails返回
         return new LoginUser(user, list);

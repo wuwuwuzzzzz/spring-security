@@ -9,4 +9,6 @@ import com.example.springsecurity.domain.User;
  * @date 20:31 2023/2/16
  */
 public interface UserMapper extends BaseMapper<User> {
+
+
 }

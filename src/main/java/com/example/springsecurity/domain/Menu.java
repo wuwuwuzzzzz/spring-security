@@ -1,14 +1,15 @@
 package com.example.springsecurity.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
  * @author wxz
  * @date 14:13 2023/2/19
  */
@@ -16,7 +17,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName(value = "sys_menu")
-public class Menu {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Menu implements Serializable {
 
     /**
      * 主键
